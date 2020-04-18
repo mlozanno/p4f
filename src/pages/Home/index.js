@@ -6,6 +6,7 @@ import { useUsers } from '../../hooks/users';
 
 import api from '../../services/api';
 
+import Layout from '../../components/Layout';
 import Header from '../../components/Header';
 import Content from '../../components/Content';
 
@@ -35,20 +36,22 @@ const Home = () => {
   return (
     <>
       <Header />
-      <div>
-        {!state.loading && (
-          <ul>
-            {state.users.map((user) => (
-              <li key={user.id} onClick={() => handleClick(user.id)}>
-                {user.name} -> Posts: {user.posts.length} -> Photos:{' '}
-                {user.photos.length}
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
+      <Layout>
+        <div>
+          {!state.loading && (
+            <ul>
+              {state.users.map((user) => (
+                <li key={user.id} onClick={() => handleClick(user.id)}>
+                  {user.name} -> Posts: {user.posts.length} -> Photos:{' '}
+                  {user.photos.length}
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
 
-      {!state.loading && <Content />}
+        {!state.loading && <Content />}
+      </Layout>
     </>
   );
 };
