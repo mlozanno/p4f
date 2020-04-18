@@ -9,16 +9,18 @@ import api from '../../services/api';
 import Nav from '../Nav';
 import Posts from '../Posts';
 import Photos from '../Photos';
+import UserInfo from '../UserInfo';
 
 import { StyledContent } from './styles';
 
 const Content = () => {
   const userId = Number(window.location.pathname.split('/')[1]);
   const [state, dispatch] = useUsers();
+  const user = state.users[userId - 1];
 
   useEffect(() => {
     async function fetchData() {
-      if (!state.users[userId - 1].posts.length) {
+      if (!user.posts.length) {
         const { data: posts } = await api.get('posts', { params: { userId } });
         const { data: photos } = await api.get('photos', {
           params: { albumId: userId },
@@ -42,12 +44,15 @@ const Content = () => {
   return (
     <StyledContent>
       <Nav />
+
+      <UserInfo user={user} />
+
       <Switch>
         <Route path="/:userId/photos">
           <Photos />
         </Route>
         <Route path="/:userId/posts">
-          <Posts />
+          <Posts posts={user.posts} />
         </Route>
         <Route path="/">
           <Redirect to="/1/photos" />
