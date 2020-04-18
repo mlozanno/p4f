@@ -49,10 +49,10 @@ const Content = () => {
 
       <Switch>
         <Route path="/:userId/photos">
-          <Photos />
+          {user.photos.length && <Photos photos={user.photos} />}
         </Route>
         <Route path="/:userId/posts">
-          <Posts posts={user.posts} />
+          {user.posts.length && <Posts posts={user.posts} />}
         </Route>
         <Route path="/">
           <Redirect to="/1/photos" />
