@@ -2,10 +2,14 @@ import React, { useEffect } from 'react';
 
 // import { Container } from './styles';
 
-const Posts = () => {
+import PostItem from '../PostItem';
+
+const Posts = ({ posts }) => {
   return (
     <>
-      <h1>Posts</h1>
+      {posts.map((post) => (
+        <PostItem title={post.title} body={post.body} key={post.id} />
+      ))}
     </>
   );
 };
