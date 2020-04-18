@@ -1,15 +1,16 @@
 import React, { useEffect } from 'react';
 
-import { Link, Switch, Route, Redirect, useParams } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 
 import { useUsers } from '../../hooks/users';
 
 import api from '../../services/api';
 
+import Nav from '../Nav';
 import Posts from '../Posts';
 import Photos from '../Photos';
 
-// import { Container } from './styles';
+import { StyledContent } from './styles';
 
 const Content = () => {
   const userId = Number(window.location.pathname.split('/')[1]);
@@ -39,17 +40,8 @@ const Content = () => {
   }, [userId]); //eslint-disable-line
 
   return (
-    <>
-      <nav>
-        <ul>
-          <li>
-            <Link to={`photos`}>Fotos</Link>
-          </li>
-          <li>
-            <Link to={`posts`}>Posts</Link>
-          </li>
-        </ul>
-      </nav>
+    <StyledContent>
+      <Nav />
       <Switch>
         <Route path="/:userId/photos">
           <Photos />
@@ -61,7 +53,7 @@ const Content = () => {
           <Redirect to="/1/photos" />
         </Route>
       </Switch>
-    </>
+    </StyledContent>
   );
 };
 
