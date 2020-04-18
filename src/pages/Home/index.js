@@ -6,6 +6,7 @@ import { useUsers } from '../../hooks/users';
 
 import api from '../../services/api';
 
+import Header from '../../components/Header';
 import Content from '../../components/Content';
 
 const Home = () => {
@@ -33,7 +34,7 @@ const Home = () => {
 
   return (
     <>
-      <h1>Header</h1>
+      <Header />
       <div>
         {!state.loading && (
           <ul>
