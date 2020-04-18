@@ -13,7 +13,9 @@ import UserList from '../../components/UserList';
 import UserCard from '../../components/UserCard';
 
 const Home = () => {
-  let userId = Number(window.location.pathname.split('/')[1]);
+  const url = window.location.pathname.split('/');
+  const userId = Number(url[1]);
+
   const [state, dispatch] = useUsers();
   const history = useHistory();
 
@@ -32,7 +34,7 @@ const Home = () => {
   }, []); //eslint-disable-line
 
   const handleClick = (id) => {
-    history.push(`/${id}/photos`);
+    history.push(`/${id}/${url[2]}`);
   };
 
   return (
