@@ -14,7 +14,7 @@ import UserInfo from '../UserInfo';
 import { StyledContent } from './styles';
 
 const Content = () => {
-  const userId = Number(window.location.pathname.split('/')[1]);
+  const userId = Number(window.location.pathname.split('/')[1]) || 1;
   const [state, dispatch] = useUsers();
   const user = state.users[userId - 1];
 
