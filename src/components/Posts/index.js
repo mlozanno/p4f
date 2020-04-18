@@ -1,6 +1,4 @@
-import React, { useEffect } from 'react';
-
-// import { Container } from './styles';
+import React from 'react';
 
 import PostItem from '../PostItem';
 
