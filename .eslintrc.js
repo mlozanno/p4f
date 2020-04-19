@@ -27,10 +27,11 @@ module.exports = {
       {
         devDependencies: [
           '.storybook/**',
-          'stories/**'
+          './src/stories/**'
         ]
       }
-    ]
+		],
+		"react/jsx-props-no-spreading": "off",
 	},
 	settings: {
 		'import/resolver': {
