@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import theme from '~/styles/theme';
+import theme from '../../styles/theme';
 
 export const StyledUserCard = styled.li`
 	display: flex;
@@ -13,10 +13,11 @@ export const StyledUserCard = styled.li`
 	);
 	color: #333;
 	font-weight: bold;
-	font-size: 1.4rem;
+	font-size: 14px;
 	border-radius: 0.6rem;
 	padding: ${theme.metric(2)};
-	width: ${theme.metric(30)};
+	width: 100%;
+	max-width: ${theme.metric(30)};
 	box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.16);
 	margin-right: ${theme.metric(2)};
 	flex-shrink: 0;
@@ -51,7 +52,6 @@ export const StyledUserCard = styled.li`
 	}
 
 	@media (min-width: 768px) {
-		width: 100%;
 		margin-right: 0;
 		margin-bottom: ${theme.metric(2)};
 	}
