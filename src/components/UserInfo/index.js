@@ -20,7 +20,19 @@ const UserInfo = ({ user }) => (
 );
 
 UserInfo.propTypes = {
-	user: PropTypes.object.isRequired,
+	user: PropTypes.shape({
+		name: PropTypes.string,
+		address: PropTypes.shape({
+			city: PropTypes.string,
+			street: PropTypes.string,
+			suite: PropTypes.string,
+			zipcode: PropTypes.string,
+		}),
+	}),
+};
+
+UserInfo.defaultProps = {
+	user: {},
 };
 
 export default UserInfo;

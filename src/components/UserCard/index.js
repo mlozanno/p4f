@@ -28,6 +28,11 @@ UserCard.propTypes = {
 	name: PropTypes.string.isRequired,
 	email: PropTypes.string.isRequired,
 	company: PropTypes.string.isRequired,
+	handleClick: PropTypes.func,
+};
+
+UserCard.defaultProps = {
+	handleClick: null,
 };
 
 export default UserCard;

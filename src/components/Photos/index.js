@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import PropTypes from 'prop-types';
 
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import { StyledPhotos } from './styles';
@@ -26,6 +27,7 @@ const Photos = ({ photos }) => {
 	}, [acc]);
 
 	const handleClick = (e, photo) => {
+		e.preventDefault();
 		setMainPhoto(photo);
 	};
 
@@ -61,19 +63,36 @@ const Photos = ({ photos }) => {
 				<FiChevronLeft onClick={() => prev()} />
 				<ul ref={slideEl}>
 					{photos.map((photo) => (
-						<li
+						<a
+							role="button"
+							href=""
 							key={photo.id}
 							onClick={(e) => handleClick(e, photo)}
+							onKeyPress={(e) => handleClick(e, photo)}
 							ref={itemEl}
 						>
 							<img src={photo.thumbnailUrl} alt={photo.title} />
-						</li>
+						</a>
 					))}
 					<FiChevronRight onClick={() => next()} />
 				</ul>
 			</div>
 		</StyledPhotos>
 	);
+};
+
+Photos.propTypes = {
+	photos: PropTypes.arrayOf(
+		PropTypes.shape({
+			name: PropTypes.string,
+			url: PropTypes.string,
+			title: PropTypes.string,
+		})
+	),
+};
+
+Photos.defaultProps = {
+	photos: [],
 };
 
 export default Photos;

@@ -20,12 +20,12 @@ export const StyledPhotos = styled.article`
 		}
 	}
 
-	ul {
+	div {
 		overflow-y: scroll;
 		display: flex;
 		margin-top: ${({ theme }) => theme.metric(3)};
 
-		li {
+		a {
 			display: block;
 			flex-shrink: 0;
 		}

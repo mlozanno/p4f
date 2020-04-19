@@ -51,7 +51,7 @@ const Home = () => {
 								posts={user.posts}
 								email={user.email}
 								company={user.company.name}
-								handleClick={(id) => handleClick(user.id)}
+								handleClick={() => handleClick(user.id)}
 							/>
 							// <li key={user.id} onClick={() => handleClick(user.id)}>
 							//   {user.name} -> Posts: {user.posts.length} -> Photos:{' '}

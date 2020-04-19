@@ -16,11 +16,11 @@ import { StyledContent } from './styles';
 const Content = () => {
 	const userId = Number(window.location.pathname.split('/')[1]) || 1;
 	const [state, dispatch] = useUsers();
-	const user = state.users[userId - 1];
+	const selectedUser = state.users[userId - 1];
 
 	useEffect(() => {
 		async function fetchData() {
-			if (!user.posts.length) {
+			if (!selectedUser.posts.length) {
 				const { data: posts } = await api.get('posts', { params: { userId } });
 				const { data: photos } = await api.get('photos', {
 					params: { albumId: userId },
@@ -45,14 +45,16 @@ const Content = () => {
 		<StyledContent>
 			<Nav />
 
-			<UserInfo user={user} />
+			<UserInfo user={selectedUser} />
 
 			<Switch>
 				<Route path="/:userId/photos">
-					{user.photos.length && <Photos photos={user.photos} />}
+					{selectedUser.photos.length && (
+						<Photos photos={selectedUser.photos} />
+					)}
 				</Route>
 				<Route path="/:userId/posts">
-					{user.posts.length && <Posts posts={user.posts} />}
+					{selectedUser.posts.length && <Posts posts={selectedUser.posts} />}
 				</Route>
 				<Route path="/">
 					<Redirect to="/1/photos" />

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import PostItem from '../PostItem';
 
@@ -10,6 +11,20 @@ const Posts = ({ posts }) => {
 			))}
 		</>
 	);
+};
+
+Posts.propTypes = {
+	posts: PropTypes.arrayOf(
+		PropTypes.shape({
+			title: PropTypes.string,
+			body: PropTypes.string,
+			id: PropTypes.number,
+		})
+	),
+};
+
+Posts.defaultProps = {
+	posts: [],
 };
 
 export default Posts;
