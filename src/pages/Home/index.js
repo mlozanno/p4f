@@ -1,7 +1,5 @@
 import React, { useEffect } from 'react';
 
-import { useHistory } from 'react-router-dom';
-
 import { useUsers } from '~/hooks/users';
 
 import api from '~/services/api';
@@ -10,14 +8,13 @@ import Layout from '~/components/Layout';
 import Header from '~/components/Header';
 import Content from '~/components/Content';
 import UserList from '~/components/UserList';
-import UserCard from '~/components/UserCard';
 
 const Home = () => {
 	const url = window.location.pathname.split('/');
 	const userId = Number(url[1]);
+	const pathName = Number(url[2]);
 
 	const [state, dispatch] = useUsers();
-	const history = useHistory();
 
 	useEffect(() => {
 		async function fetchUsers() {
@@ -33,33 +30,13 @@ const Home = () => {
 		fetchUsers();
   }, []); //eslint-disable-line
 
-	const handleClick = (id) => {
-		history.push(`/${id}/${url[2]}`);
-	};
+
 
 	return (
 		<>
 			<Header />
 			<Layout>
-				{!state.loading && (
-					<UserList>
-						{state.users.map((user) => (
-							<UserCard
-								key={user.id}
-								data-user-id={user.id}
-								name={user.name}
-								posts={user.posts}
-								email={user.email}
-								company={user.company.name}
-								handleClick={() => handleClick(user.id)}
-							/>
-							// <li key={user.id} onClick={() => handleClick(user.id)}>
-							//   {user.name} -> Posts: {user.posts.length} -> Photos:{' '}
-							//   {user.photos.length}
-							// </li>
-						))}
-					</UserList>
-				)}
+				{!state.loading && <UserList users={state.users} pathName={pathName} />}
 
 				{!state.loading && <Content />}
 			</Layout>
