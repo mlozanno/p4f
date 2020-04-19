@@ -2,15 +2,15 @@ import React, { useEffect } from 'react';
 
 import { useHistory } from 'react-router-dom';
 
-import { useUsers } from '../../hooks/users';
+import { useUsers } from '~/hooks/users';
 
-import api from '../../services/api';
+import api from '~/services/api';
 
-import Layout from '../../components/Layout';
-import Header from '../../components/Header';
-import Content from '../../components/Content';
-import UserList from '../../components/UserList';
-import UserCard from '../../components/UserCard';
+import Layout from '~/components/Layout';
+import Header from '~/components/Header';
+import Content from '~/components/Content';
+import UserList from '~/components/UserList';
+import UserCard from '~/components/UserCard';
 
 const Home = () => {
 	const url = window.location.pathname.split('/');

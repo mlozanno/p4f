@@ -21,6 +21,13 @@ module.exports = {
 		'prettier/prettier': 'error',
 		'react/jsx-filename-extension': ['warn', { extensions: ['.js', '.jsx'] }],
 		'import/prefer-default-export': 'off',
-		"jsx-a11y/anchor-is-valid": 0
+		"jsx-a11y/anchor-is-valid": 0,
+	},
+	settings: {
+		'import/resolver': {
+			'babel-plugin-root-import': {
+				rootPathSuffix: 'src',
+			},
+		},
 	},
 };
