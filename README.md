@@ -1,117 +1,117 @@
 ## Explicação da abordagem escolhida para fetch e estado
 - No primeiro load da aplicação, fazemos o load de todos os usuários
-  ```json
-	{
-		"users": [
-			{
-				"id": 1,
-				"name": "Jhon Doe"
-			},
-			{
-				"id": 2,
-				"name": "Jhon Doe"
-			},
-			{
-				"id": 3,
-				"name": "Jhon Doe"
-			},
-			{
-				"id": 4,
-				"name": "Jhon Doe
-			"}
-		]
-	}
-	```
+```json
+{
+ "users": [
+  {
+   "id": 1,
+   "name": "Jhon Doe"
+  },
+  {
+   "id": 2,
+   "name": "Jhon Doe"
+  },
+  {
+   "id": 3,
+   "name": "Jhon Doe"
+  },
+  {
+   "id": 4,
+   "name": "Jhon Doe
+  "}
+ ]
+}
+```
 
 - Ainda neste primeiro acesso, identificamos o usuário que está sendo acessado via url e carregamos os posts e fotos deste usuário, populamos apenas este usuário com estes dados. <br>
-  `/2/photos` ou `/2/posts`
-- ```json
-	{
-		"users": [
-			{
-				"id": 1,
-				"name": "Jhon Doe",
-				"posts": [],
-				"photos": []
-			},
-			{
-				"id": 2,
-				"name": "Jhon Doe",
-				"posts": [
-					{"id": 1, "title": "Blog tittle"},
-					{"id": 2, "title": "Blog tittle"},
-					{"id": 3, "title": "Blog tittle"},
-				],
-				"photos": [
-					{"albumId": 1, "url": "http://foo.bar"},
-					{"albumId": 2, "url": "http://foo.bar"},
-					{"albumId": 3, "url": "http://foo.bar"},
-				]
-			},
-			{
-				"id": 3,
-				"name": "Jhon Doe",
-				"posts": [],
-				"photos": []
-			},
-			{
-				"id": 4,
-				"name": "Jhon Doe",
-				"posts": [],
-				"photos": []
-			},
-		]
-	}
-	```
-	- Durante a primeira navegação para um usuário ainda não acessado, fazemos buscamos na api os pots e fotos deste usuário e populamos o estado, a partir do segundo request, os dados já estarão disponíveis no estados
+`/2/photos` ou `/2/posts`
+```json
+{
+ "users": [
+  {
+   "id": 1,
+   "name": "Jhon Doe",
+   "posts": [],
+   "photos": []
+  },
+  {
+   "id": 2,
+   "name": "Jhon Doe",
+   "posts": [
+    {"id": 1, "title": "Blog tittle"},
+    {"id": 2, "title": "Blog tittle"},
+    {"id": 3, "title": "Blog tittle"},
+   ],
+   "photos": [
+    {"albumId": 1, "url": "http://foo.bar"},
+    {"albumId": 2, "url": "http://foo.bar"},
+    {"albumId": 3, "url": "http://foo.bar"},
+   ]
+  },
+  {
+   "id": 3,
+   "name": "Jhon Doe",
+   "posts": [],
+   "photos": []
+  },
+  {
+   "id": 4,
+   "name": "Jhon Doe",
+   "posts": [],
+   "photos": []
+  },
+ ]
+}
+```
+- Durante a primeira navegação para um usuário ainda não acessado, fazemos buscamos na api os pots e fotos deste usuário e populamos o estado, a partir do segundo request, os dados já estarão disponíveis no estados
 
-  `/3/photos` ou `/3/posts`
-	```json
-	{
-		"users": [
-			{
-				"id": 1,
-				"name": "Jhon Doe",
-				"posts": [],
-				"photos": []
-			},
-			{
-				"id": 2,
-				"name": "Jhon Doe",
-				"posts": [
-					{"id": 1, "title": "Blog tittle"},
-					{"id": 2, "title": "Blog tittle"},
-					{"id": 3, "title": "Blog tittle"},
-				],
-				"photos": [
-					{"albumId": 1, "url": "http://foo.bar"},
-					{"albumId": 2, "url": "http://foo.bar"},
-					{"albumId": 3, "url": "http://foo.bar"},
-				]
-			},
-			{
-				"id": 3,
-				"name": "Jhon Doe",
-				"posts": [
-					{"id": 1, "title": "Blog tittle"},
-					{"id": 2, "title": "Blog tittle"},
-					{"id": 3, "title": "Blog tittle"},
-				],
-				"photos": [
-					{"albumId": 1, "url": "http://foo.bar"},
-					{"albumId": 2, "url": "http://foo.bar"},
-					{"albumId": 3, "url": "http://foo.bar"},
-				]
-			},
-			{
-				"id": 4,
-				"name": "Jhon Doe",
-				"posts": [],
-				"photos": []
-			},
-		]
-	}
-	```
+`/3/photos` ou `/3/posts`
+```json
+{
+ "users": [
+  {
+   "id": 1,
+   "name": "Jhon Doe",
+   "posts": [],
+   "photos": []
+  },
+  {
+   "id": 2,
+   "name": "Jhon Doe",
+   "posts": [
+    {"id": 1, "title": "Blog tittle"},
+    {"id": 2, "title": "Blog tittle"},
+    {"id": 3, "title": "Blog tittle"},
+   ],
+   "photos": [
+    {"albumId": 1, "url": "http://foo.bar"},
+    {"albumId": 2, "url": "http://foo.bar"},
+    {"albumId": 3, "url": "http://foo.bar"},
+   ]
+  },
+  {
+   "id": 3,
+   "name": "Jhon Doe",
+   "posts": [
+    {"id": 1, "title": "Blog tittle"},
+    {"id": 2, "title": "Blog tittle"},
+    {"id": 3, "title": "Blog tittle"},
+   ],
+   "photos": [
+    {"albumId": 1, "url": "http://foo.bar"},
+    {"albumId": 2, "url": "http://foo.bar"},
+    {"albumId": 3, "url": "http://foo.bar"},
+   ]
+  },
+  {
+   "id": 4,
+   "name": "Jhon Doe",
+   "posts": [],
+   "photos": []
+  },
+ ]
+}
+```
 
 ## Notas
 
