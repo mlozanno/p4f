@@ -32,8 +32,18 @@ export const StyledPhotos = styled.article`
 
     img {
       max-width: 150px;
-      display: block;
       border: 4px solid #f0f0f0;
+
+      position: relative;
+      cursor: pointer;
+      transition: all 0.15s ease-out;
+      opacity: 0.7;
+
+      &:hover {
+        opacity: 1;
+        transform: scale(1.03);
+        box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.16);
+      }
     }
   }
 
