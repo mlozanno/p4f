@@ -6,10 +6,10 @@ import { reducer, initialState } from '../reducers/users';
 export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
-  const contextValue = useReducer(reducer, initialState);
-  return (
-    <UserContext.Provider value={contextValue}>
-      <Router>{children}</Router>
-    </UserContext.Provider>
-  );
+	const contextValue = useReducer(reducer, initialState);
+	return (
+		<UserContext.Provider value={contextValue}>
+			<Router>{children}</Router>
+		</UserContext.Provider>
+	);
 };

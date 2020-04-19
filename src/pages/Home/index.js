@@ -13,58 +13,58 @@ import UserList from '../../components/UserList';
 import UserCard from '../../components/UserCard';
 
 const Home = () => {
-  const url = window.location.pathname.split('/');
-  const userId = Number(url[1]);
+	const url = window.location.pathname.split('/');
+	const userId = Number(url[1]);
 
-  const [state, dispatch] = useUsers();
-  const history = useHistory();
+	const [state, dispatch] = useUsers();
+	const history = useHistory();
 
-  useEffect(() => {
-    async function fetchUsers() {
-      const { data: users } = await api.get('users');
+	useEffect(() => {
+		async function fetchUsers() {
+			const { data: users } = await api.get('users');
 
-      const payload = users.map((user) => {
-        return Object.assign(user, { photos: [], posts: [] });
-      });
+			const payload = users.map((user) => {
+				return Object.assign(user, { photos: [], posts: [] });
+			});
 
-      dispatch({ type: 'FETCH_USERS_SUCCESS', payload, userId });
-    }
+			dispatch({ type: 'FETCH_USERS_SUCCESS', payload, userId });
+		}
 
-    fetchUsers();
+		fetchUsers();
   }, []); //eslint-disable-line
 
-  const handleClick = (id) => {
-    history.push(`/${id}/${url[2]}`);
-  };
+	const handleClick = (id) => {
+		history.push(`/${id}/${url[2]}`);
+	};
 
-  return (
-    <>
-      <Header />
-      <Layout>
-        {!state.loading && (
-          <UserList>
-            {state.users.map((user) => (
-              <UserCard
-                key={user.id}
-                data-user-id={user.id}
-                name={user.name}
-                posts={user.posts}
-                email={user.email}
-                company={user.company.name}
-                handleClick={(id) => handleClick(user.id)}
-              />
-              // <li key={user.id} onClick={() => handleClick(user.id)}>
-              //   {user.name} -> Posts: {user.posts.length} -> Photos:{' '}
-              //   {user.photos.length}
-              // </li>
-            ))}
-          </UserList>
-        )}
+	return (
+		<>
+			<Header />
+			<Layout>
+				{!state.loading && (
+					<UserList>
+						{state.users.map((user) => (
+							<UserCard
+								key={user.id}
+								data-user-id={user.id}
+								name={user.name}
+								posts={user.posts}
+								email={user.email}
+								company={user.company.name}
+								handleClick={(id) => handleClick(user.id)}
+							/>
+							// <li key={user.id} onClick={() => handleClick(user.id)}>
+							//   {user.name} -> Posts: {user.posts.length} -> Photos:{' '}
+							//   {user.photos.length}
+							// </li>
+						))}
+					</UserList>
+				)}
 
-        {!state.loading && <Content />}
-      </Layout>
-    </>
-  );
+				{!state.loading && <Content />}
+			</Layout>
+		</>
+	);
 };
 
 export default Home;

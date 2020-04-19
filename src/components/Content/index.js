@@ -14,52 +14,52 @@ import UserInfo from '../UserInfo';
 import { StyledContent } from './styles';
 
 const Content = () => {
-  const userId = Number(window.location.pathname.split('/')[1]) || 1;
-  const [state, dispatch] = useUsers();
-  const user = state.users[userId - 1];
+	const userId = Number(window.location.pathname.split('/')[1]) || 1;
+	const [state, dispatch] = useUsers();
+	const user = state.users[userId - 1];
 
-  useEffect(() => {
-    async function fetchData() {
-      if (!user.posts.length) {
-        const { data: posts } = await api.get('posts', { params: { userId } });
-        const { data: photos } = await api.get('photos', {
-          params: { albumId: userId },
-        });
+	useEffect(() => {
+		async function fetchData() {
+			if (!user.posts.length) {
+				const { data: posts } = await api.get('posts', { params: { userId } });
+				const { data: photos } = await api.get('photos', {
+					params: { albumId: userId },
+				});
 
-        const payload = state.users.map((user) => {
-          if (user.id === userId) {
-            return Object.assign(user, { posts, photos });
-          }
+				const payload = state.users.map((user) => {
+					if (user.id === userId) {
+						return Object.assign(user, { posts, photos });
+					}
 
-          return user;
-        });
+					return user;
+				});
 
-        dispatch({ type: 'FETCH_USER_DATA', payload });
-      }
-    }
+				dispatch({ type: 'FETCH_USER_DATA', payload });
+			}
+		}
 
-    fetchData();
+		fetchData();
   }, [userId]); //eslint-disable-line
 
-  return (
-    <StyledContent>
-      <Nav />
+	return (
+		<StyledContent>
+			<Nav />
 
-      <UserInfo user={user} />
+			<UserInfo user={user} />
 
-      <Switch>
-        <Route path="/:userId/photos">
-          {user.photos.length && <Photos photos={user.photos} />}
-        </Route>
-        <Route path="/:userId/posts">
-          {user.posts.length && <Posts posts={user.posts} />}
-        </Route>
-        <Route path="/">
-          <Redirect to="/1/photos" />
-        </Route>
-      </Switch>
-    </StyledContent>
-  );
+			<Switch>
+				<Route path="/:userId/photos">
+					{user.photos.length && <Photos photos={user.photos} />}
+				</Route>
+				<Route path="/:userId/posts">
+					{user.posts.length && <Posts posts={user.posts} />}
+				</Route>
+				<Route path="/">
+					<Redirect to="/1/photos" />
+				</Route>
+			</Switch>
+		</StyledContent>
+	);
 };
 
 export default Content;
