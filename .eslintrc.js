@@ -22,6 +22,15 @@ module.exports = {
 		'react/jsx-filename-extension': ['warn', { extensions: ['.js', '.jsx'] }],
 		'import/prefer-default-export': 'off',
 		"jsx-a11y/anchor-is-valid": 0,
+		'import/no-extraneous-dependencies': [
+      'error',
+      {
+        devDependencies: [
+          '.storybook/**',
+          'stories/**'
+        ]
+      }
+    ]
 	},
 	settings: {
 		'import/resolver': {
