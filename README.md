@@ -1,68 +1,148 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Explicação da abordagem escolhida para fetch e estado
+- No primeiro load da aplicação, fazemos o load de todos os usuários
+  ```json
+	{
+		"users": [
+			{
+				"id": 1,
+				"name": "Jhon Doe"
+			},
+			{
+				"id": 2,
+				"name": "Jhon Doe"
+			},
+			{
+				"id": 3,
+				"name": "Jhon Doe"
+			},
+			{
+				"id": 4,
+				"name": "Jhon Doe
+			"}
+		]
+	}
+	```
+
+- Ainda neste primeiro acesso, identificamos o usuário que está sendo acessado via url e carregamos os posts e fotos deste usuário, populamos apenas este usuário com estes dados. <br>
+  `/2/photos` ou `/2/posts`
+- ```json
+	{
+		"users": [
+			{
+				"id": 1,
+				"name": "Jhon Doe",
+				"posts": [],
+				"photos": []
+			},
+			{
+				"id": 2,
+				"name": "Jhon Doe",
+				"posts": [
+					{"id": 1, "title": "Blog tittle"},
+					{"id": 2, "title": "Blog tittle"},
+					{"id": 3, "title": "Blog tittle"},
+				],
+				"photos": [
+					{"albumId": 1, "url": "http://foo.bar"},
+					{"albumId": 2, "url": "http://foo.bar"},
+					{"albumId": 3, "url": "http://foo.bar"},
+				]
+			},
+			{
+				"id": 3,
+				"name": "Jhon Doe",
+				"posts": [],
+				"photos": []
+			},
+			{
+				"id": 4,
+				"name": "Jhon Doe",
+				"posts": [],
+				"photos": []
+			},
+		]
+	}
+	```
+	- Durante a primeira navegação para um usuário ainda não acessado, fazemos buscamos na api os pots e fotos deste usuário e populamos o estado, a partir do segundo request, os dados já estarão disponíveis no estados
+
+  `/3/photos` ou `/3/posts`
+	```json
+	{
+		"users": [
+			{
+				"id": 1,
+				"name": "Jhon Doe",
+				"posts": [],
+				"photos": []
+			},
+			{
+				"id": 2,
+				"name": "Jhon Doe",
+				"posts": [
+					{"id": 1, "title": "Blog tittle"},
+					{"id": 2, "title": "Blog tittle"},
+					{"id": 3, "title": "Blog tittle"},
+				],
+				"photos": [
+					{"albumId": 1, "url": "http://foo.bar"},
+					{"albumId": 2, "url": "http://foo.bar"},
+					{"albumId": 3, "url": "http://foo.bar"},
+				]
+			},
+			{
+				"id": 3,
+				"name": "Jhon Doe",
+				"posts": [
+					{"id": 1, "title": "Blog tittle"},
+					{"id": 2, "title": "Blog tittle"},
+					{"id": 3, "title": "Blog tittle"},
+				],
+				"photos": [
+					{"albumId": 1, "url": "http://foo.bar"},
+					{"albumId": 2, "url": "http://foo.bar"},
+					{"albumId": 3, "url": "http://foo.bar"},
+				]
+			},
+			{
+				"id": 4,
+				"name": "Jhon Doe",
+				"posts": [],
+				"photos": []
+			},
+		]
+	}
+	```
+
+## Notas
+
+- Não quis adicionar muita complexidade ao projeto adicionando Redux, Saga, etc. Preferi uma abordatem mais simplista utilizando os hooks do próprio React, creio que para projetos pequenos, eles se saiam muito bem.
+
+- Não havia utilizado o StoryBook anteriormente.
+Uma grande dificuldade foi utiliza-lo com as tecnologias mais atuais como o root import, styled-components com `<ThemeProvider />`, hooks do react-router-dom como o useHistory, por exemplo, não consegui encontrar uma solução de fácil implementação que resolvesse o problema para todos os componentes, a cada componente surgia um problema novo, não quis demandar muito tempo neste problema.
+
+## Node version
+
+`node => v12.16.x` <br />
+`npm => v6.14.x`
 
 ## Available Scripts
 
 In the project directory, you can run:
-
-### `yarn start`
-
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+```bash
+$ yarn start
+```
+```bash
+$ yarn build
+```
+```bash
+$ yarn test
+```
+```bash
+$ yarn lint
+```
+```bash
+$ yarn storybook
+```
+```bash
+$ yarn build-storybook
+```
