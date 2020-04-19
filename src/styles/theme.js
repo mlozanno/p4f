@@ -2,7 +2,7 @@ import { darken } from 'polished';
 
 const base = 8;
 
-export const theme = {
+export default {
 	colors: {
 		blue: '#009EFD',
 		darkBlue: darken(0.2, '#009EFD'),

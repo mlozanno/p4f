@@ -1,9 +1,10 @@
 import styled from 'styled-components';
+import theme from '~/styles/theme';
 
 export const StyledPhotos = styled.article`
 	figure {
 		width: 100%;
-		max-width: ${({ theme }) => theme.metric(75)};
+		max-width: ${theme.metric(75)};
 		margin: 0 auto;
 	}
 
@@ -23,7 +24,7 @@ export const StyledPhotos = styled.article`
 	div {
 		overflow-y: scroll;
 		display: flex;
-		margin-top: ${({ theme }) => theme.metric(3)};
+		margin-top: ${theme.metric(3)};
 
 		a {
 			display: block;
@@ -49,7 +50,7 @@ export const StyledPhotos = styled.article`
 
 	@media (min-width: 1024px) {
 		> div {
-			padding: 0 ${({ theme }) => theme.metric(8)};
+			padding: 0 ${theme.metric(8)};
 			position: relative;
 
 			svg {
@@ -67,11 +68,11 @@ export const StyledPhotos = styled.article`
 				}
 
 				&:first-child {
-					left: ${({ theme }) => theme.metric(-2)};
+					left: ${theme.metric(-2)};
 				}
 
 				&:last-child {
-					right: ${({ theme }) => theme.metric(-2)};
+					right: ${theme.metric(-2)};
 				}
 			}
 		}

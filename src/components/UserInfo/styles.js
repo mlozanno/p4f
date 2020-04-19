@@ -1,12 +1,13 @@
 import styled from 'styled-components';
+import theme from '~/styles/theme';
 
 export const StyledUserInfo = styled.div`
-	margin: ${({ theme }) => theme.metric(2, 0)};
+	margin: ${theme.metric(2, 0)};
 	> p {
 		display: flex;
 
 		svg {
-			margin-right: ${({ theme }) => theme.metric(1)};
+			margin-right: ${theme.metric(1)};
 		}
 	}
 `;

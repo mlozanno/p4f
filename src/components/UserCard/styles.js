@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import theme from '~/styles/theme';
 
 export const StyledUserCard = styled.li`
 	display: flex;
@@ -7,17 +8,17 @@ export const StyledUserCard = styled.li`
 	cursor: pointer;
 	background: linear-gradient(
 		135deg,
-		${({ theme }) => theme.colors.blue},
-		${({ theme }) => theme.colors.green}
+		${theme.colors.blue},
+		${theme.colors.green}
 	);
 	color: #333;
 	font-weight: bold;
 	font-size: 1.4rem;
 	border-radius: 0.6rem;
-	padding: ${({ theme }) => theme.metric(2)};
-	width: ${({ theme }) => theme.metric(30)};
+	padding: ${theme.metric(2)};
+	width: ${theme.metric(30)};
 	box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.16);
-	margin-right: ${({ theme }) => theme.metric(2)};
+	margin-right: ${theme.metric(2)};
 	flex-shrink: 0;
 	transition: all 0.15s ease-out;
 	position: relative;
@@ -36,8 +37,8 @@ export const StyledUserCard = styled.li`
 		align-items: center;
 
 		svg {
-			font-size: ${({ theme }) => theme.metric(2)};
-			margin-right: ${({ theme }) => theme.metric(1)};
+			font-size: ${theme.metric(2)};
+			margin-right: ${theme.metric(1)};
 			color: #fff;
 			font-weight: normal;
 		}
@@ -45,13 +46,13 @@ export const StyledUserCard = styled.li`
 
 	@media (max-width: 767px) {
 		&:first-child {
-			margin-left: ${({ theme }) => theme.metric(2)};
+			margin-left: ${theme.metric(2)};
 		}
 	}
 
 	@media (min-width: 768px) {
 		width: 100%;
 		margin-right: 0;
-		margin-bottom: ${({ theme }) => theme.metric(2)};
+		margin-bottom: ${theme.metric(2)};
 	}
 `;
