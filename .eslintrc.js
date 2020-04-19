@@ -21,6 +21,23 @@ module.exports = {
 		'prettier/prettier': 'error',
 		'react/jsx-filename-extension': ['warn', { extensions: ['.js', '.jsx'] }],
 		'import/prefer-default-export': 'off',
-		"jsx-a11y/anchor-is-valid": 0
+		"jsx-a11y/anchor-is-valid": 0,
+		'import/no-extraneous-dependencies': [
+      'error',
+      {
+        devDependencies: [
+          '.storybook/**',
+          './src/stories/**'
+        ]
+      }
+		],
+		"react/jsx-props-no-spreading": "off",
+	},
+	settings: {
+		'import/resolver': {
+			'babel-plugin-root-import': {
+				rootPathSuffix: 'src',
+			},
+		},
 	},
 };

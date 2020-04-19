@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import PostItem from '../PostItem';
+import PostItem from '~/components/PostItem';
 
 const Posts = ({ posts }) => {
 	return (

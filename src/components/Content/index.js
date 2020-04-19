@@ -2,14 +2,14 @@ import React, { useEffect } from 'react';
 
 import { Switch, Route, Redirect } from 'react-router-dom';
 
-import { useUsers } from '../../hooks/users';
+import { useUsers } from '~/hooks/users';
 
-import api from '../../services/api';
+import api from '~/services/api';
 
-import Nav from '../Nav';
-import Posts from '../Posts';
-import Photos from '../Photos';
-import UserInfo from '../UserInfo';
+import Nav from '~/components/Nav';
+import Posts from '~/components/Posts';
+import Photos from '~/components/Photos';
+import UserInfo from '~/components/UserInfo';
 
 import { StyledContent } from './styles';
 

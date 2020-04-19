@@ -3,7 +3,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
 
-import { reducer, initialState } from '../reducers/users';
+import { reducer, initialState } from '~/reducers/users';
 
 export const UserContext = createContext();
 
