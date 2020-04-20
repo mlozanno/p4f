@@ -31,7 +31,7 @@ const Home = () => {
 		}
 
 		fetchUsers();
-  }, []); //eslint-disable-line
+	}, []);
 
 	const handleClick = (id) => {
 		history.push(`/${id}/${url[2]}`);
@@ -53,10 +53,6 @@ const Home = () => {
 								company={user.company.name}
 								handleClick={() => handleClick(user.id)}
 							/>
-							// <li key={user.id} onClick={() => handleClick(user.id)}>
-							//   {user.name} -> Posts: {user.posts.length} -> Photos:{' '}
-							//   {user.photos.length}
-							// </li>
 						))}
 					</UserList>
 				)}
