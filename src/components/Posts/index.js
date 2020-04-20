@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import PostItem from '~/components/PostItem';
+import PostCard from '~/components/PostCard';
 
 const Posts = ({ posts }) => {
 	return (
 		<>
 			{posts.map((post) => (
-				<PostItem title={post.title} body={post.body} key={post.id} />
+				<PostCard title={post.title} body={post.body} key={post.id} />
 			))}
 		</>
 	);
