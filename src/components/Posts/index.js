@@ -5,11 +5,11 @@ import PostCard from '~/components/PostCard';
 
 const Posts = ({ posts }) => {
 	return (
-		<>
+		<div data-testid="posts">
 			{posts.map((post) => (
 				<PostCard title={post.title} body={post.body} key={post.id} />
 			))}
-		</>
+		</div>
 	);
 };
 
