@@ -2,10 +2,10 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import PostCard from '~/components/PostCard';
 
-describe('<PosCard />', () => {
-	const title = 'Lorem ipsum dolor sit amet.';
-	const body = 'Lorem ipsum dolor sit amet.';
+const title = 'Lorem ipsum dolor sit amet.';
+const body = 'Lorem ipsum dolor sit amet.';
 
+describe('<PosCard />', () => {
 	it('should be render component', () => {
 		const { getByTestId } = render(<PostCard title={title} body={body} />);
 

@@ -7,7 +7,7 @@ import { StyledUserCard } from './styles';
 
 const UserCard = ({ name, email, company, handleClick }) => {
 	return (
-		<StyledUserCard onClick={handleClick}>
+		<StyledUserCard onClick={handleClick} data-testid="user-card">
 			<span>
 				<MdPerson />
 				{name}
