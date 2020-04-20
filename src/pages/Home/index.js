@@ -15,6 +15,7 @@ import UserCard from '~/components/UserCard';
 const Home = () => {
 	const url = window.location.pathname.split('/');
 	const userId = Number(url[1]);
+	const pathName = url[2];
 
 	const [state, dispatch] = useUsers();
 	const history = useHistory();
@@ -34,7 +35,7 @@ const Home = () => {
 	}, []);
 
 	const handleClick = (id) => {
-		history.push(`/${id}/${url[2]}`);
+		history.push(`/${id}/${pathName}`);
 	};
 
 	return (
