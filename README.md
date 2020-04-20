@@ -117,8 +117,12 @@
 
 - Não quis adicionar muita complexidade ao projeto adicionando Redux, Saga, etc. Preferi uma abordatem mais simplista utilizando os hooks do próprio React, creio que para projetos pequenos, eles se saiam muito bem.
 
-- Não havia utilizado o StoryBook anteriormente.
-Uma grande dificuldade foi utiliza-lo com as tecnologias mais atuais como o root import, styled-components com `<ThemeProvider />`, hooks do react-router-dom como o useHistory, por exemplo, não consegui encontrar uma solução de fácil implementação que resolvesse o problema para todos os componentes, a cada componente surgia um problema novo, não quis demandar muito tempo neste problema.
+- Não havia utilizado o Storybook anteriormente. Por não ter familiaridade com o projeto, não sabia exatamente como buscar o problema listado abaixo. Após procurar outras coisas relacionadas a teste, descobri que o problema, na verdade, era apenas falta de configuração customizada no webpack do Storybook e não o que havia dito anteriormente.
+
+- ~~Não havia utilizado o StoryBook anteriormente.
+Uma grande dificuldade foi utiliza-lo com as tecnologias mais atuais como o root import, styled-components com `<ThemeProvider />`, hooks do react-router-dom como o useHistory, por exemplo, não consegui encontrar uma solução de fácil implementação que resolvesse o problema para todos os componentes, a cada componente surgia um problema novo, não quis demandar muito tempo neste problema.~~
+
+- Não tenho muita familiaridade com testes, pra ser sincero, creio que nunca havia escrito um teste com ciência do que estava ali e para ser sincero, nunca achei divertido escrever testes, por falta de conhecimento do mesmo. Este desafio serviu para que eu necessitasse ir mais afundo e descobri que escrever testes pode ser mais divertido do que parece. Isto me levo a tentar reescrever este projeto utilizando TDD e BDD, então algo de bom já saiu daqui :P
 
 ## Node version
 
