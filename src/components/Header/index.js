@@ -5,8 +5,8 @@ import { GiNinjaHead } from 'react-icons/gi';
 import { StyledHeader } from './styles';
 
 const Header = () => (
-	<StyledHeader>
-		<GiNinjaHead /> FakeApp
+	<StyledHeader data-testid="header">
+		<GiNinjaHead data-testid="logo" /> FakeApp
 	</StyledHeader>
 );
 

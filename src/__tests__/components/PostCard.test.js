@@ -9,7 +9,9 @@ describe('<PosCard />', () => {
 	it('should be render component', () => {
 		const { getByTestId } = render(<PostCard title={title} body={body} />);
 
-		expect(getByTestId('post-card')).toBeInTheDocument();
+		const postCard = getByTestId('post-card');
+
+		expect(postCard).toBeInTheDocument();
 	});
 
 	it('should be have a header tag', () => {
