@@ -22,17 +22,21 @@ const Home = () => {
 
 	useEffect(() => {
 		async function fetchUsers() {
-			const { data: users } = await api.get('users');
+			try {
+				const { data: users } = await api.get('users');
 
-			const payload = users.map((user) => {
-				return Object.assign(user, { photos: [], posts: [] });
-			});
+				const payload = users.map((user) => {
+					return Object.assign(user, { photos: [], posts: [] });
+				});
 
-			dispatch({ type: 'FETCH_USERS_SUCCESS', payload, userId });
+				dispatch({ type: 'FETCH_USERS_SUCCESS', payload, userId });
+			} catch (error) {
+				console.log(`Error: ${error}`);
+			}
 		}
 
 		fetchUsers();
-	}, []);
+	}, []); // eslint-disable-line
 
 	const handleClick = (id) => {
 		history.push(`/${id}/${pathName}`);

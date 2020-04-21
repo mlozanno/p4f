@@ -65,7 +65,7 @@ const Photos = ({ photos }) => {
 					{photos.map((photo) => (
 						<a
 							role="button"
-							href=""
+							href="/"
 							key={photo.id}
 							onClick={(e) => handleClick(e, photo)}
 							onKeyPress={(e) => handleClick(e, photo)}
